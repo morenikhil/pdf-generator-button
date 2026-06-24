@@ -37,35 +37,7 @@ A **reusable Lightning Web Component** that renders any Salesforce record as a P
 
 ## Architecture
 
-```
-┌─────────────────────────────────┐
-│   Lightning Record Page         │
-│  ┌───────────────────────────┐  │
-│  │  pdfGeneratorButton (LWC) │  │
-│  │  - Generate PDF button    │  │
-│  │  - PDF history table      │  │
-│  └─────────────┬─────────────┘  │
-│                │ @AuraEnabled   │
-└────────────────┼────────────────┘
-                 │
-     ┌───────────▼────────────┐
-     │  PdfGeneratorController │  (Apex — with sharing)
-     │  generateAndSavePdf()  │
-     │  getGeneratedPdfs()    │
-     └───────────┬────────────┘
-                 │
-     ┌───────────▼────────────┐
-     │  RecordPdfPage (VF)    │  renderAs="pdf"
-     │  ?id=&objectApiName=   │  ◄── PageReference.getContentAsPDF()
-     └───────────┬────────────┘
-                 │  Blob
-     ┌───────────▼────────────┐
-     │  ContentVersion        │  Salesforce Files
-     │  ContentDocumentLink   │  Linked to source record
-     └────────────────────────┘
-```
-
----
+<img width="4500" height="5750" alt="PDF-Generator-LWC-Architecture-Diagram" src="https://github.com/user-attachments/assets/d340a2ba-f87a-4998-9225-9a37a7cfe6b2" />
 
 ## Component Structure
 
