@@ -196,7 +196,3 @@ sf org assign permset --name PdfGenerator --on-behalf-of someUser@example.com --
 | Scratch org note | `renderAs="pdf"` requires an active Visualforce page and does **not** render in LWC local dev server preview. |
 
 ---
-
-## License
-
-MIT — free to use, modify, and distribute.
