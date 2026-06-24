@@ -1,0 +1,20 @@
+# Salesforce DX
+.sfdx/
+.sf/
+*.zip
+
+# Node
+node_modules/
+.node_modules/
+
+# OS
+.DS_Store
+Thumbs.db
+
+# IDE
+.vscode/settings.json
+.idea/
+
+# Org credentials
+*.key
+*.pem

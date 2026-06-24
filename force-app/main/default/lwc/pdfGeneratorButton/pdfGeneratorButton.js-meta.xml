@@ -1,0 +1,34 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<LightningComponentBundle xmlns="http://soap.sforce.com/2006/04/metadata">
+    <apiVersion>59.0</apiVersion>
+    <isExposed>true</isExposed>
+    <targets>
+        <target>lightning__RecordPage</target>
+        <target>lightning__AppPage</target>
+        <target>lightning__FlowScreen</target>
+    </targets>
+    <targetConfigs>
+        <targetConfig targets="lightning__RecordPage">
+            <property
+                name="buttonLabel"
+                type="String"
+                label="Button Label"
+                description="Label displayed on the Generate PDF button."
+                default="Generate PDF"
+            />
+            <property
+                name="vfPageName"
+                type="String"
+                label="Visualforce Page Name"
+                description="API name of the Visualforce page used to render the PDF (without the /apex/ prefix)."
+                default="RecordPdfPage"
+            />
+            <property
+                name="pdfFileName"
+                type="String"
+                label="PDF File Name (optional)"
+                description="Static file name for the PDF. Leave blank to auto-generate from object + record ID + date."
+            />
+        </targetConfig>
+    </targetConfigs>
+</LightningComponentBundle>

@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<PermissionSet xmlns="http://soap.sforce.com/2006/04/metadata">
+    <label>PDF Generator</label>
+    <description>Grants access to generate and view PDFs via the pdfGeneratorButton LWC.</description>
+    <hasActivationRequired>false</hasActivationRequired>
+
+    <apexClassAccesses>
+        <apexClass>PdfGeneratorController</apexClass>
+        <enabled>true</enabled>
+    </apexClassAccesses>
+    <apexClassAccesses>
+        <apexClass>RecordPdfPageController</apexClass>
+        <enabled>true</enabled>
+    </apexClassAccesses>
+
+    <pageAccesses>
+        <apexPage>RecordPdfPage</apexPage>
+        <enabled>true</enabled>
+    </pageAccesses>
+
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>true</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>ContentVersion</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+    <objectPermissions>
+        <allowCreate>true</allowCreate>
+        <allowDelete>false</allowDelete>
+        <allowEdit>false</allowEdit>
+        <allowRead>true</allowRead>
+        <modifyAllRecords>false</modifyAllRecords>
+        <object>ContentDocumentLink</object>
+        <viewAllRecords>false</viewAllRecords>
+    </objectPermissions>
+</PermissionSet>

@@ -1,0 +1,125 @@
+<!--
+    Generic Visualforce PDF template.
+    Receives:  ?id=<recordId>&objectApiName=<SObjectType>
+    Renders as PDF via renderAs="pdf".
+
+    Extend or replace this page with an object-specific template and set
+    the vfPageName Design Attribute on the LWC accordingly.
+-->
+<apex:page
+    controller="RecordPdfPageController"
+    renderAs="pdf"
+    applyBodyTag="false"
+    showHeader="false"
+    sidebar="false"
+    standardStylesheets="false"
+    contentType="application/pdf"
+>
+<html>
+<head>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            font-size: 10pt;
+            color: #222222;
+            margin: 0;
+            padding: 0;
+        }
+        .page-wrapper {
+            margin: 30px 40px;
+        }
+        /* ── Header ── */
+        .header {
+            border-bottom: 2px solid #0070d2;
+            padding-bottom: 10px;
+            margin-bottom: 20px;
+        }
+        .header h1 {
+            font-size: 18pt;
+            color: #0070d2;
+            margin: 0 0 4px 0;
+        }
+        .header .meta {
+            font-size: 8pt;
+            color: #666666;
+        }
+        /* ── Section ── */
+        .section-title {
+            background-color: #f4f6f9;
+            border-left: 4px solid #0070d2;
+            padding: 5px 10px;
+            font-size: 10pt;
+            font-weight: bold;
+            margin: 16px 0 8px 0;
+        }
+        /* ── Field grid ── */
+        .field-grid {
+            width: 100%;
+            border-collapse: collapse;
+        }
+        .field-grid td {
+            padding: 5px 8px;
+            vertical-align: top;
+            border-bottom: 1px solid #e8e8e8;
+            font-size: 9pt;
+        }
+        .field-grid td.label {
+            width: 30%;
+            color: #555555;
+            font-weight: bold;
+        }
+        .field-grid td.value {
+            width: 70%;
+            color: #222222;
+        }
+        /* ── Footer ── */
+        .footer {
+            position: fixed;
+            bottom: 20px;
+            left: 40px;
+            right: 40px;
+            border-top: 1px solid #cccccc;
+            font-size: 7pt;
+            color: #999999;
+            padding-top: 4px;
+            text-align: center;
+        }
+        @page {
+            margin: 0;
+        }
+    </style>
+</head>
+<body>
+<div class="page-wrapper">
+
+    <!-- Header -->
+    <div class="header">
+        <h1>{!recordLabel}</h1>
+        <div class="meta">
+            Object: {!objectApiName} &nbsp;|&nbsp;
+            Record ID: {!recordId} &nbsp;|&nbsp;
+            Generated: {!generatedDate}
+        </div>
+    </div>
+
+    <!-- Fields section -->
+    <div class="section-title">Record Details</div>
+    <table class="field-grid">
+        <apex:repeat value="{!fieldRows}" var="row">
+            <tr>
+                <td class="label"><apex:outputText value="{!row.label}" /></td>
+                <td class="value"><apex:outputText value="{!row.value}" /></td>
+            </tr>
+        </apex:repeat>
+    </table>
+
+</div>
+
+<!-- Footer (repeats on every page) -->
+<div class="footer">
+    Salesforce &bull; Generated on {!generatedDate} &bull; Confidential
+</div>
+
+</body>
+</html>
+</apex:page>
