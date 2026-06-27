@@ -1,0 +1,240 @@
+<svg viewBox="0 0 900 1150" width="900" height="1150" xmlns="http://www.w3.org/2000/svg" font-family="Arial, sans-serif">
+  <title>PDF Generator LWC — Architecture Diagram</title>
+  <desc>End-to-end architecture: LWC on Lightning Record Page calls Apex, renders Visualforce as PDF, saves as ContentVersion linked to the record.</desc>
+
+  <!-- Background -->
+  <rect width="900" height="1150" fill="#f4f6f9"/>
+
+  <!-- ── Title Bar ── -->
+  <rect x="0" y="0" width="900" height="54" fill="#032d60"/>
+  <text x="450" y="19" text-anchor="middle" fill="#ffffff" font-size="10" font-weight="700" letter-spacing="2.5">SALESFORCE</text>
+  <text x="450" y="40" text-anchor="middle" fill="#ffffff" font-size="16" font-weight="700">PDF Generator Button — Architecture Diagram</text>
+
+  <!-- ── Lane Backgrounds ── -->
+  <rect x="0" y="54"  width="900" height="168" fill="#e8f4fd" opacity="0.55"/>
+  <rect x="0" y="252" width="900" height="162" fill="#e4f5ff" opacity="0.55"/>
+  <rect x="0" y="444" width="900" height="150" fill="#fef0e0" opacity="0.55"/>
+  <rect x="0" y="624" width="900" height="162" fill="#e3f5e9" opacity="0.55"/>
+  <rect x="0" y="816" width="900" height="140" fill="#f1ecfb" opacity="0.55"/>
+  <rect x="0" y="984" width="900" height="132" fill="#eef0f4" opacity="0.70"/>
+
+  <!-- Lane dividers -->
+  <line x1="0" y1="252"  x2="900" y2="252"  stroke="#c9d2de" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="0" y1="444"  x2="900" y2="444"  stroke="#c9d2de" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="0" y1="624"  x2="900" y2="624"  stroke="#c9d2de" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="0" y1="816"  x2="900" y2="816"  stroke="#c9d2de" stroke-width="1" stroke-dasharray="5,3"/>
+  <line x1="0" y1="984"  x2="900" y2="984"  stroke="#c9d2de" stroke-width="1" stroke-dasharray="5,3"/>
+
+  <!-- ── Lane Side Labels ── -->
+  <rect x="0" y="54"  width="9" height="168" fill="#0070d2"/>
+  <text transform="translate(20,138) rotate(-90)" text-anchor="middle" fill="#0070d2" font-size="8.5" font-weight="700" letter-spacing="1.5">UI LAYER</text>
+  <rect x="0" y="252" width="9" height="162" fill="#00a1e0"/>
+  <text transform="translate(20,333) rotate(-90)" text-anchor="middle" fill="#00a1e0" font-size="8.5" font-weight="700" letter-spacing="1.5">APEX</text>
+  <rect x="0" y="444" width="9" height="150" fill="#e07b00"/>
+  <text transform="translate(20,519) rotate(-90)" text-anchor="middle" fill="#e07b00" font-size="8.5" font-weight="700" letter-spacing="1.5">VISUALFORCE</text>
+  <rect x="0" y="624" width="9" height="162" fill="#2e844a"/>
+  <text transform="translate(20,705) rotate(-90)" text-anchor="middle" fill="#2e844a" font-size="8.5" font-weight="700" letter-spacing="1.5">STORAGE</text>
+  <rect x="0" y="816" width="9" height="140" fill="#6b37bf"/>
+  <text transform="translate(20,886) rotate(-90)" text-anchor="middle" fill="#6b37bf" font-size="8.5" font-weight="700" letter-spacing="1.5">SECURITY</text>
+  <rect x="0" y="984" width="9" height="132" fill="#54698d"/>
+  <text transform="translate(20,1050) rotate(-90)" text-anchor="middle" fill="#54698d" font-size="8.5" font-weight="700" letter-spacing="1.5">TESTS</text>
+
+  <!-- ═══════ LAYER 1 — UI ═══════ -->
+  <rect x="24" y="62" width="852" height="152" rx="8" fill="none" stroke="#0070d2" stroke-width="1.5" stroke-dasharray="6,3"/>
+  <rect x="40" y="55" width="155" height="15" rx="3" fill="#0070d2"/>
+  <text x="117" y="67" text-anchor="middle" fill="#fff" font-size="9" font-weight="700">Lightning Record Page</text>
+
+  <!-- LWC card -->
+  <rect x="34"  y="74" width="272" height="130" rx="7" fill="#fff" stroke="#0070d2" stroke-width="1.5"/>
+  <rect x="34"  y="74" width="272" height="24"  rx="7" fill="#0070d2"/>
+  <rect x="34"  y="88" width="272" height="10"  fill="#0070d2"/>
+  <text x="170" y="91" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">pdfGeneratorButton (LWC)</text>
+  <text x="48"  y="114" fill="#333" font-size="10">&#x25CF; Generate PDF button</text>
+  <text x="48"  y="130" fill="#333" font-size="10">&#x25CF; PDF history table (@wire)</text>
+  <text x="48"  y="146" fill="#333" font-size="10">&#x25CF; Download &amp; toast events</text>
+  <text x="48"  y="162" fill="#333" font-size="10">&#x25CF; Custom event: pdfgenerated</text>
+  <text x="48"  y="196" fill="#888" font-size="9" font-style="italic">Targets: RecordPage · AppPage · FlowScreen</text>
+
+  <!-- Design Attributes card -->
+  <rect x="322" y="74" width="242" height="130" rx="7" fill="#fff" stroke="#0070d2" stroke-width="1.5"/>
+  <rect x="322" y="74" width="242" height="24"  rx="7" fill="#0070d2"/>
+  <rect x="322" y="88" width="242" height="10"  fill="#0070d2"/>
+  <text x="443" y="91" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Design Attributes</text>
+  <text x="336" y="114" fill="#555" font-size="10">buttonLabel</text>
+  <text x="336" y="130" fill="#555" font-size="10">vfPageName</text>
+  <text x="336" y="146" fill="#555" font-size="10">pdfFileName  (optional)</text>
+  <text x="336" y="168" fill="#888" font-size="9" font-style="italic">Configurable in Lightning App Builder</text>
+  <text x="336" y="184" fill="#888" font-size="9" font-style="italic">No code change needed per object</text>
+
+  <!-- NavigationMixin card -->
+  <rect x="580" y="74" width="238" height="130" rx="7" fill="#fff" stroke="#0070d2" stroke-width="1.5"/>
+  <rect x="580" y="74" width="238" height="24"  rx="7" fill="#0070d2"/>
+  <rect x="580" y="88" width="238" height="10"  fill="#0070d2"/>
+  <text x="699" y="91" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">NavigationMixin</text>
+  <text x="594" y="114" fill="#333" font-size="10">&#x25CF; File preview navigation</text>
+  <text x="594" y="130" fill="#333" font-size="10">&#x25CF; refreshApex on success</text>
+  <text x="594" y="146" fill="#333" font-size="10">&#x25CF; ShowToastEvent</text>
+  <text x="594" y="162" fill="#333" font-size="10">&#x25CF; @wire getGeneratedPdfs</text>
+
+  <!-- Connector UI → Apex -->
+  <line x1="450" y1="222" x2="450" y2="252" stroke="#0070d2" stroke-width="2"/>
+  <polygon points="444,247 456,247 450,255" fill="#0070d2"/>
+  <rect x="296" y="227" width="308" height="18" rx="9" fill="#0070d2"/>
+  <text x="450" y="240" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">@AuraEnabled Apex call  |  @wire (cacheable=true)</text>
+
+  <!-- ═══════ LAYER 2 — APEX ═══════ -->
+  <rect x="24"  y="264" width="408" height="130" rx="7" fill="#fff" stroke="#00a1e0" stroke-width="1.5"/>
+  <rect x="24"  y="264" width="408" height="24"  rx="7" fill="#00a1e0"/>
+  <rect x="24"  y="278" width="408" height="10"  fill="#00a1e0"/>
+  <text x="228" y="281" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">PdfGeneratorController.generateAndSavePdf()</text>
+  <text x="38"  y="306" fill="#333" font-size="10">1.  Validate recordId &amp; vfPageName</text>
+  <text x="38"  y="322" fill="#333" font-size="10">2.  Build PageReference  ?id=  &amp;  ?objectApiName=</text>
+  <text x="38"  y="338" fill="#333" font-size="10">3.  Call getContentAsPDF()  &#x2192;  Blob</text>
+  <text x="38"  y="354" fill="#333" font-size="10">4.  Insert ContentVersion</text>
+  <text x="38"  y="370" fill="#333" font-size="10">5.  Insert ContentDocumentLink  &#x2192;  return CV Id</text>
+
+  <rect x="448" y="264" width="428" height="130" rx="7" fill="#fff" stroke="#00a1e0" stroke-width="1.5"/>
+  <rect x="448" y="264" width="428" height="24"  rx="7" fill="#00a1e0"/>
+  <rect x="448" y="278" width="428" height="10"  fill="#00a1e0"/>
+  <text x="662" y="281" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">PdfGeneratorController.getGeneratedPdfs()</text>
+  <text x="462" y="306" fill="#333" font-size="10">1.  Query ContentDocumentLink by recordId</text>
+  <text x="462" y="322" fill="#333" font-size="10">2.  Collect ContentDocumentIds  (Set&lt;Id&gt;)</text>
+  <text x="462" y="338" fill="#333" font-size="10">3.  Query ContentVersion WHERE ext=pdf, IsLatest=true</text>
+  <text x="462" y="354" fill="#333" font-size="10">4.  ORDER BY CreatedDate DESC  LIMIT 20</text>
+  <text x="462" y="370" fill="#333" font-size="10">5.  Return list  &#x2192;  LWC wire cache</text>
+
+  <rect x="310" y="402" width="280" height="18" rx="9" fill="#e4f5ff" stroke="#00a1e0" stroke-width="1"/>
+  <text x="450" y="415" text-anchor="middle" fill="#00a1e0" font-size="9" font-weight="700">with sharing  |  AuraHandledException on all errors</text>
+
+  <!-- Connector Apex → VF -->
+  <line x1="450" y1="428" x2="450" y2="444" stroke="#e07b00" stroke-width="2"/>
+  <polygon points="444,439 456,439 450,447" fill="#e07b00"/>
+  <rect x="280" y="428" width="340" height="18" rx="9" fill="#e07b00"/>
+  <text x="450" y="441" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">PageReference.getContentAsPDF()</text>
+
+  <!-- ═══════ LAYER 3 — VISUALFORCE ═══════ -->
+  <rect x="24"  y="456" width="390" height="130" rx="7" fill="#fff" stroke="#e07b00" stroke-width="1.5"/>
+  <rect x="24"  y="456" width="390" height="24"  rx="7" fill="#e07b00"/>
+  <rect x="24"  y="470" width="390" height="10"  fill="#e07b00"/>
+  <text x="219" y="473" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">RecordPdfPage.page  (renderAs="pdf")</text>
+  <text x="38"  y="498" fill="#333" font-size="10">&#x25CF; Receives  ?id=  and  ?objectApiName=</text>
+  <text x="38"  y="514" fill="#333" font-size="10">&#x25CF; Branded layout: header, field grid, footer</text>
+  <text x="38"  y="530" fill="#333" font-size="10">&#x25CF; Fixed footer repeats on every page</text>
+  <text x="38"  y="546" fill="#333" font-size="10">&#x25CF; Replace with any object-specific VF page</text>
+  <text x="38"  y="566" fill="#888" font-size="9" font-style="italic">contentType="application/pdf"</text>
+
+  <rect x="430" y="456" width="446" height="130" rx="7" fill="#fff" stroke="#e07b00" stroke-width="1.5"/>
+  <rect x="430" y="456" width="446" height="24"  rx="7" fill="#e07b00"/>
+  <rect x="430" y="470" width="446" height="10"  fill="#e07b00"/>
+  <text x="653" y="473" text-anchor="middle" fill="#fff" font-size="10.5" font-weight="700">RecordPdfPageController.cls</text>
+  <text x="444" y="498" fill="#333" font-size="10">&#x25CF; Schema.getGlobalDescribe() — works for any SObject</text>
+  <text x="444" y="514" fill="#333" font-size="10">&#x25CF; Dynamic SOQL on COMMON_FIELDS list</text>
+  <text x="444" y="530" fill="#333" font-size="10">&#x25CF; formatValue() handles Date, Datetime, Boolean</text>
+  <text x="444" y="546" fill="#333" font-size="10">&#x25CF; Returns List&lt;FieldRow&gt; to VF template</text>
+  <text x="444" y="566" fill="#888" font-size="9" font-style="italic">without sharing  (render context)</text>
+
+  <!-- Connector VF → Storage -->
+  <line x1="450" y1="594" x2="450" y2="624" stroke="#2e844a" stroke-width="2"/>
+  <polygon points="444,619 456,619 450,627" fill="#2e844a"/>
+  <rect x="280" y="600" width="340" height="18" rx="9" fill="#2e844a"/>
+  <text x="450" y="613" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">Blob  &#x2192;  insert ContentVersion  +  ContentDocumentLink</text>
+
+  <!-- ═══════ LAYER 4 — STORAGE ═══════ -->
+  <rect x="24"  y="636" width="264" height="130" rx="7" fill="#fff" stroke="#2e844a" stroke-width="1.5"/>
+  <rect x="24"  y="636" width="264" height="24"  rx="7" fill="#2e844a"/>
+  <rect x="24"  y="650" width="264" height="10"  fill="#2e844a"/>
+  <text x="156" y="653" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">ContentVersion</text>
+  <text x="38"  y="678" fill="#333" font-size="10">Title</text>
+  <text x="38"  y="694" fill="#333" font-size="10">PathOnClient  (.pdf)</text>
+  <text x="38"  y="710" fill="#333" font-size="10">VersionData  (Blob)</text>
+  <text x="38"  y="726" fill="#333" font-size="10">IsMajorVersion = true</text>
+  <text x="38"  y="742" fill="#333" font-size="10">Origin = 'H'</text>
+  <text x="38"  y="758" fill="#888" font-size="9" font-style="italic">insert &#x2192; auto-creates ContentDocument</text>
+
+  <rect x="304" y="636" width="262" height="130" rx="7" fill="#fff" stroke="#2e844a" stroke-width="1.5"/>
+  <rect x="304" y="636" width="262" height="24"  rx="7" fill="#2e844a"/>
+  <rect x="304" y="650" width="262" height="10"  fill="#2e844a"/>
+  <text x="435" y="653" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">ContentDocument</text>
+  <text x="318" y="678" fill="#333" font-size="10">Parent document record</text>
+  <text x="318" y="694" fill="#333" font-size="10">Auto-created on CV insert</text>
+  <text x="318" y="710" fill="#333" font-size="10">Holds all file versions</text>
+  <text x="318" y="730" fill="#888" font-size="9" font-style="italic">Referenced by CDL</text>
+
+  <rect x="582" y="636" width="294" height="130" rx="7" fill="#fff" stroke="#2e844a" stroke-width="1.5"/>
+  <rect x="582" y="636" width="294" height="24"  rx="7" fill="#2e844a"/>
+  <rect x="582" y="650" width="294" height="10"  fill="#2e844a"/>
+  <text x="729" y="653" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">ContentDocumentLink</text>
+  <text x="596" y="678" fill="#333" font-size="10">ContentDocumentId</text>
+  <text x="596" y="694" fill="#333" font-size="10">LinkedEntityId = recordId</text>
+  <text x="596" y="710" fill="#333" font-size="10">ShareType = 'V'</text>
+  <text x="596" y="726" fill="#333" font-size="10">Visibility = 'AllUsers'</text>
+  <text x="596" y="746" fill="#888" font-size="9" font-style="italic">Links PDF to source record</text>
+
+  <line x1="288" y1="701" x2="304" y2="701" stroke="#2e844a" stroke-width="1.5" stroke-dasharray="4,2"/>
+  <line x1="566" y1="701" x2="582" y2="701" stroke="#2e844a" stroke-width="1.5" stroke-dasharray="4,2"/>
+
+  <!-- Connector Storage → Security -->
+  <line x1="450" y1="786" x2="450" y2="816" stroke="#6b37bf" stroke-width="2"/>
+  <polygon points="444,811 456,811 450,819" fill="#6b37bf"/>
+  <rect x="310" y="794" width="280" height="18" rx="9" fill="#6b37bf"/>
+  <text x="450" y="807" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">Assign PdfGenerator permission set to users</text>
+
+  <!-- ═══════ LAYER 5 — SECURITY ═══════ -->
+  <rect x="24"  y="828" width="414" height="118" rx="7" fill="#fff" stroke="#6b37bf" stroke-width="1.5"/>
+  <rect x="24"  y="828" width="414" height="24"  rx="7" fill="#6b37bf"/>
+  <rect x="24"  y="842" width="414" height="10"  fill="#6b37bf"/>
+  <text x="231" y="845" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">PdfGenerator Permission Set</text>
+  <text x="38"  y="870" fill="#333" font-size="10">&#x25CF; PdfGeneratorController — Apex Execute</text>
+  <text x="38"  y="886" fill="#333" font-size="10">&#x25CF; RecordPdfPageController — Apex Execute</text>
+  <text x="38"  y="902" fill="#333" font-size="10">&#x25CF; RecordPdfPage — VF Page Access</text>
+  <text x="38"  y="918" fill="#333" font-size="10">&#x25CF; ContentVersion CRUD  |  ContentDocumentLink RC</text>
+
+  <rect x="454" y="828" width="422" height="118" rx="7" fill="#fff" stroke="#6b37bf" stroke-width="1.5"/>
+  <rect x="454" y="828" width="422" height="24"  rx="7" fill="#6b37bf"/>
+  <rect x="454" y="842" width="422" height="10"  fill="#6b37bf"/>
+  <text x="665" y="845" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">Sharing &amp; Access Model</text>
+  <text x="468" y="870" fill="#333" font-size="10">&#x25CF; PdfGeneratorController:  with sharing</text>
+  <text x="468" y="886" fill="#333" font-size="10">&#x25CF; Record-level security enforced automatically</text>
+  <text x="468" y="902" fill="#333" font-size="10">&#x25CF; AuraHandledException on all errors</text>
+  <text x="468" y="918" fill="#333" font-size="10">&#x25CF; Test.isRunningTest() guard for PDF blob</text>
+
+  <!-- Connector Security → Tests -->
+  <line x1="450" y1="956" x2="450" y2="984" stroke="#54698d" stroke-width="2"/>
+  <polygon points="444,979 456,979 450,987" fill="#54698d"/>
+  <rect x="316" y="962" width="268" height="18" rx="9" fill="#54698d"/>
+  <text x="450" y="975" text-anchor="middle" fill="#fff" font-size="9.5" font-weight="700">sf apex run test — RunLocalTests</text>
+
+  <!-- ═══════ LAYER 6 — TESTS ═══════ -->
+  <rect x="24"  y="996" width="414" height="110" rx="7" fill="#fff" stroke="#54698d" stroke-width="1.5"/>
+  <rect x="24"  y="996" width="414" height="24"  rx="7" fill="#54698d"/>
+  <rect x="24"  y="1010" width="414" height="10"  fill="#54698d"/>
+  <text x="231" y="1013" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">PdfGeneratorControllerTest  (7 methods)</text>
+  <text x="38"  y="1038" fill="#333" font-size="10">&#x2713;  Success  &#x2713;  Auto file name  &#x2713;  Append .pdf extension</text>
+  <text x="38"  y="1054" fill="#333" font-size="10">&#x2713;  Blank recordId  &#x2713;  Blank vfPageName</text>
+  <text x="38"  y="1070" fill="#333" font-size="10">&#x2713;  Get PDFs — returns list  &#x2713;  No files — empty list</text>
+
+  <rect x="454" y="996" width="422" height="110" rx="7" fill="#fff" stroke="#54698d" stroke-width="1.5"/>
+  <rect x="454" y="996" width="422" height="24"  rx="7" fill="#54698d"/>
+  <rect x="454" y="1010" width="422" height="10"  fill="#54698d"/>
+  <text x="665" y="1013" text-anchor="middle" fill="#fff" font-size="11" font-weight="700">RecordPdfPageControllerTest  (4 methods)</text>
+  <text x="468" y="1038" fill="#333" font-size="10">&#x2713;  Valid record — field rows populated</text>
+  <text x="468" y="1054" fill="#333" font-size="10">&#x2713;  Missing URL params  &#x2713;  Unknown object type</text>
+  <text x="468" y="1070" fill="#333" font-size="10">&#x2713;  Record not found</text>
+
+  <!-- ═══════ LEGEND ═══════ -->
+  <line x1="0" y1="1116" x2="900" y2="1116" stroke="#dddbda" stroke-width="1"/>
+  <rect x="0" y="1116" width="900" height="34" fill="#ffffff"/>
+  <rect x="28"  y="1126" width="10" height="10" rx="2" fill="#0070d2"/>
+  <text x="42"  y="1135" fill="#333" font-size="9">UI / LWC</text>
+  <rect x="112" y="1126" width="10" height="10" rx="2" fill="#00a1e0"/>
+  <text x="126" y="1135" fill="#333" font-size="9">Apex</text>
+  <rect x="182" y="1126" width="10" height="10" rx="2" fill="#e07b00"/>
+  <text x="196" y="1135" fill="#333" font-size="9">Visualforce</text>
+  <rect x="278" y="1126" width="10" height="10" rx="2" fill="#2e844a"/>
+  <text x="292" y="1135" fill="#333" font-size="9">Salesforce Files</text>
+  <rect x="390" y="1126" width="10" height="10" rx="2" fill="#6b37bf"/>
+  <text x="404" y="1135" fill="#333" font-size="9">Security</text>
+  <rect x="462" y="1126" width="10" height="10" rx="2" fill="#54698d"/>
+  <text x="476" y="1135" fill="#333" font-size="9">Tests</text>
+  <text x="872" y="1135" text-anchor="end" fill="#aaa" font-size="8">API v59.0  |  Salesforce LWC</text>
+</svg>
